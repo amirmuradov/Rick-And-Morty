@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           ..add(
             GetCharactersEvent(),
           ),
-        child: MainPage(),
+        child: const MainPage(),
       ),
     );
   }
