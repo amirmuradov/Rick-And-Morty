@@ -7,8 +7,11 @@ import 'package:model_test/repository/repository.dart';
 Future<void> main() async {
   final repository = Repository();
   runApp(
-    MyApp(
-      repository: repository,
+    RepositoryProvider(
+      create: (context) => repository,
+      child: MyApp(
+        repository: repository,
+      ),
     ),
   );
 }
@@ -20,11 +23,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BlocProvider(
-        create: (context) => CharacterBloc(repository: repository)
-          ..add(
-            GetCharactersEvent(),
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => CharacterBloc(repository: repository)
+              ..add(
+                GetCharactersEvent(),
+              ),
           ),
+          // BlocProvider(
+          //   create: (context) => SubjectBloc(),
+          // ),
+        ],
         child: const MainPage(),
       ),
     );

@@ -34,5 +34,5 @@ class CharacterLoaded extends CharacterState {
   const CharacterLoaded({required this.character});
 
   @override
-  List<Object?> get prop => [character];
+  List<Object> get props => [character];
 }

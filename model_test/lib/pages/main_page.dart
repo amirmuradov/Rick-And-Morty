@@ -26,7 +26,6 @@ class MainPage extends StatelessWidget {
             );
           } else if (state is CharacterLoaded) {
             final List<Character> characters = state.character;
-
             return ListView.builder(
               itemCount: characters.length,
               itemBuilder: (context, index) {
