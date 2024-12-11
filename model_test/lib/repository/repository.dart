@@ -6,7 +6,7 @@ class Repository {
   Future<Either<Exception, List<Character>>> getCharacter() async {
     ApiClient apiClient = ApiClient();
 
-    final response = apiClient.get<List<Character>>(
+    final response = await apiClient.get<List<Character>>(
       'character/',
       fromJson: (json) {
         final results = json['results'] as List;
